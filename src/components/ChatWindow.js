@@ -28,6 +28,14 @@ export default () => {
         setEmojiOpen(false);
     }
 
+    const handleMicClick = () => {
+
+    }
+
+    const handleSendClick = () => {
+        
+    }
+
     return (
         <div className="chatWindow">
            <div className="chatWindow--header">
@@ -98,12 +106,12 @@ export default () => {
                 <div className="chatWindow--pos">
 
                     {text === '' &&
-                    <div className="chatWindow--btn">
+                    <div onClick={handleMicClick} className="chatWindow--btn">
                         <MicIcon style={{color: '#919191'}} />    
                     </div> 
                     }
                     {text !== '' &&
-                    <div className="chatWindow--btn">
+                    <div onClick={handleSendClick} className="chatWindow--btn">
                         <SendIcon style={{color: '#919191'}} />    
                     </div> 
                     }
