@@ -37,5 +37,15 @@
 }
 
 .newChat--list {
-    
+    flex: 1;
+    overflow-y: auto;
 }
+
+.newChat--list::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;  
+  }
+  
+.newChat--list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
