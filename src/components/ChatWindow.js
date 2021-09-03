@@ -10,11 +10,19 @@ import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
+import { SettingsEthernet } from '@material-ui/icons';
 
 export default () => {
 
+    let recognition = null;
+    let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    if(SpeechRecognition !== undefined) {
+        recognition = new SpeechRecognition();
+    }
+
     const [emojiOpen, setEmojiOpen] = useState(false);
     const [text, setText] = useState('');
+    const [listening, setListening] = useState(false);
 
     const handleEmojiClick = (e, emojiObject) => {
         setText( text + emojiObject.emoji );
@@ -29,7 +37,21 @@ export default () => {
     }
 
     const handleMicClick = () => {
+        if(recognition !== null) {
 
+            recognition.onstart = () => {
+                setListening(true);
+            }
+            recognition.onend = () => {
+                setListening(false);
+            }
+            recognition.onresult = (e) => {
+                setText( e.results[0][0].transcript );
+            }
+
+            recognition.start();
+
+        }
     }
 
     const handleSendClick = () => {
@@ -107,7 +129,7 @@ export default () => {
 
                     {text === '' &&
                     <div onClick={handleMicClick} className="chatWindow--btn">
-                        <MicIcon style={{color: '#919191'}} />    
+                        <MicIcon style={{color: listening ? '#126ECE' : '#919191'}} />    
                     </div> 
                     }
                     {text !== '' &&
