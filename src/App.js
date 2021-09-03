@@ -5,6 +5,7 @@ import './App.css';
 import ChatListItem from './components/ChatListItem';
 import ChatIntro from './components/ChatIntro';
 import ChatWindow from './components/ChatWindow';
+import NewChat from './components/NewChat';
 
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -30,7 +31,7 @@ export default () => {
   return (
     <div className="app-window">
       <div className="sidebar">
-
+        <NewChat />
         <header>
           <img className="header--avatar" src={user.avatar} alt="" />
           <div className="header--buttons">
