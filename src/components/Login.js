@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import Api from '../Api';
 import './Login.css';
+import Api from '../Api';
 
 export default ({onReceive}) => {
     const handleFacebookLogin = async () => {
@@ -12,8 +12,6 @@ export default ({onReceive}) => {
             alert ("Erro!");
         }
     }
-
-
     return (
         <div className="login">
                 <button onClick={handleFacebookLogin}>Logar com o Facebook</button>
