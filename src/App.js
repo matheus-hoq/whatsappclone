@@ -28,10 +28,22 @@ export default () => {
 
   });
 
+  const [showNewChat, setShowNewChat] = useState(false);
+
+  const handleNewChat = () => {
+    setShowNewChat(true);
+  }
+
   return (
     <div className="app-window">
       <div className="sidebar">
-        <NewChat />
+        <NewChat 
+          chatlist={chatlist}
+          user={user}
+          show={showNewChat}
+          setShow={setShowNewChat}
+        
+        />
         <header>
           <img className="header--avatar" src={user.avatar} alt="" />
           <div className="header--buttons">
@@ -39,7 +51,7 @@ export default () => {
               <DonutLargeIcon style={{color: '#919191'}}/>
             </div>
             <div className="header--btn">
-              <ChatIcon style={{color: '#919191'}}/>
+              <ChatIcon onClick={handleNewChat} style={{color: '#919191'}}/>
             </div>
             <div className="header--btn">
               <MoreVertIcon style={{color: '#919191'}}/>
