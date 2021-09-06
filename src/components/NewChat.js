@@ -18,7 +18,7 @@ export default ({user, chatlist, show, setShow}) => {
 
 
     return (
-        <div className="newChat" style={{left: show?0:415}}>
+        <div className="newChat" style={{left: show?0:-415}}>
             <div className="newChat--head">
                 <div onClick={handleClose} className="newChat--backbutton">
                 <ArrowBackIcon style={{color: '#FFFFFF'}}/>
