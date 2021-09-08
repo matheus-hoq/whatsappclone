@@ -2,6 +2,8 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 
+import Api from './Api'
+
 import ChatListItem from './components/ChatListItem';
 import ChatIntro from './components/ChatIntro';
 import ChatWindow from './components/ChatWindow';
@@ -15,14 +17,13 @@ import SearchIcon from '@material-ui/icons/Search';
 
 export default () => {
 
-  const [chatlist, setChatList] = useState([
-    {chatId: 1, title: 'Fulano de Tal', image: 'https://www.w3schools.com/howto/img_avatar2.png'},
-    {chatId: 2, title: 'Fulano de Tal', image: 'https://www.w3schools.com/howto/img_avatar2.png'},
-    {chatId: 3, title: 'Fulano de Tal', image: 'https://www.w3schools.com/howto/img_avatar2.png'},
-    {chatId: 4, title: 'Fulano de Tal', image: 'https://www.w3schools.com/howto/img_avatar2.png'}
-  ]);
+  const [chatlist, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    id: 'aHiEJQtoiL8SuUIpmoU2',
+    name: 'Matheus Henrique',
+    avatar: 'https://graph.facebook.com/4127626400696059/picture',
+  });
 
   const [showNewChat, setShowNewChat] = useState(false);
 
@@ -36,7 +37,7 @@ export default () => {
       name: u.displayName,
       avatar: u.photoURL
     };
-    //
+    await Api.addUser(newUser);
     setUser(newUser);
   }
 
