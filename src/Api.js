@@ -97,7 +97,7 @@ export default {
             let u = await db.collection('users').doc(users[i]).get();
             let uData = u.data();
             if(uData.chats) {
-                let chats = [...uData.chats]
+                let chats = [...uData.chats];
 
                 for (let e in chats) {
                     if(chats[e].chatId == chatData.chatId) {
