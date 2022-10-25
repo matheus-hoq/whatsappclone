@@ -34,7 +34,7 @@ export default ({user, data}) => {
     useEffect(() => {
 
         setList([]);
-        let unsub = Api.onChatContent(data.chatId, setList, setUsers);
+        Api.onChatContent(data.chatId, setList, setUsers);
 
     }, [data.chatId]);
 
@@ -75,7 +75,7 @@ export default ({user, data}) => {
     }
 
     const handleInputKeyUp = (e) => {
-        if(e.keyCode == 13) {
+        if(e.keyCode === 13) {
             handleSendClick();
         }
     }
